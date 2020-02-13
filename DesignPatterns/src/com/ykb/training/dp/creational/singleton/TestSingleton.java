@@ -1,0 +1,24 @@
+package com.ykb.training.dp.creational.singleton;
+
+public class TestSingleton {
+    private static volatile TestSingleton instance;
+
+    private TestSingleton() {
+    }
+
+    public static TestSingleton getInstance() {
+
+        if (TestSingleton.instance == null) {
+            synchronized (TestSingleton.class) {
+                if (TestSingleton.instance == null) {
+                    TestSingleton.instance = new TestSingleton();
+                }
+            }
+        }
+        return TestSingleton.instance;
+    }
+
+    public void hello() {
+        System.out.println("Hello world");
+    }
+}
